@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br" ng-app="alurapic">
     <head>
+        <base href="/">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <title>Alurapic</title>
@@ -10,29 +11,16 @@
         <script src="js/lib/angular.min.js"></script>
         <!-- importando o módulo ngAnimate -->
         <script src="js/lib/angular-animate.min.js"></script>
+        <!-- importando o módulo ngRoutes -->
+        <script src="js/lib/angular-route.min.js"></script>
 
         <script src="js/main.js"></script>
         <script src="js/controllers/fotos-controller.js"></script>
         <script src="js/directives/minhas-diretivas.js"></script>
     </head>
-    <body ng-controller="FotosController">
+    <body>
         <div class="container">
-            <div class="jumbotron">
-                <h1 class="text-center">Alurapic</h1>
-            </div> <!-- final jumbotron -->
-            
-            <!-- novidade, a row com o campo de busca -->
-            <div class="row">
-                <div class="col-md-12">
-                    <form><input type="text" class="form-control" placeholder="filtrar pelo título da foto" ng-model="filtro" ng-model-options="{ debounce: 500 }"></form>
-                </div>
-            </div> <!-- fim row -->
-
-            <div class="row">
-                    <meu-painel class="col-md-2 painel-animado" ng-repeat="foto in fotos | filter:filtro" titulo="{{foto.titulo}}">
-                        <img class="img-responsive center-block" src="{{foto.url}}" alt="{{foto.titulo}}">
-                    </meu-painel>
-                </div><!-- fim row -->
+            <ng-view></ng-view>
         </div><!-- fim container -->
     </body>
 </html>
